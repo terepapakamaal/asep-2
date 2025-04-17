@@ -10,7 +10,7 @@ const UrlSafetyChecker = () => {
     try {
       const response = await axios.post('https://safebrowsing.googleapis.com/v4/threatMatches:find', {
         client: {
-          clientId: "AIzaSyB7FssDf1KpaSTteYgwZ-gCW-8UhE4fESE",
+          clientId: "598518711115-eh00t08bipsjlhfuia2gd9gkn3u112dh.apps.googleusercontent.com",
           clientVersion: "1.0.0"
         },
         threatInfo: {
