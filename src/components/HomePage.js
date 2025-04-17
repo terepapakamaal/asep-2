@@ -31,6 +31,16 @@ const HomePage = () => (
           File Malicious Checker
         </Button>
       </Grid>
+      <Grid item>
+        <Button variant="contained" color="secondary" component={Link} to="/education">
+          Learn About Scams
+        </Button>
+      </Grid>
+      <Grid item>
+        <Button variant="contained" color="secondary" component={Link} to="/email-breach">
+          Email Breach Check
+        </Button>
+      </Grid>
     </Grid>
   </Container>
 );
