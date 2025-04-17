@@ -6,6 +6,8 @@ import SmsScamChecker from './components/SmsScamChecker';
 import PhoneScamChecker from './components/PhoneScamChecker';
 import PasswordChecker from './components/PasswordChecker';
 import FileMaliciousChecker from './components/FileMaliciousChecker';
+import EducationPage from './components/EducationPage';
+import EmailBreachRedirect from './components/EmailBreachRedirect';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/phone-checker" element={<PhoneScamChecker />} />
         <Route path="/password-checker" element={<PasswordChecker />} />
         <Route path="/file-checker" element={<FileMaliciousChecker />} />
+        <Route path="/education" element={<EducationPage />} />
+        <Route path="/email-breach" element={<EmailBreachRedirect />} />
       </Routes>
     </Router>
   );
