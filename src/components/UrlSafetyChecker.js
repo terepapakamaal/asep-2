@@ -19,7 +19,7 @@ const UrlSafetyChecker = () => {
           threatEntryTypes: ["URL"],
           threatEntries: [{ url }]
         },
-        key: "your-google-api-key"
+        key: "AIzaSyB7FssDf1KpaSTteYgwZ-gCW-8UhE4fESE"
       });
       setResult(response.data.matches ? 'Unsafe URL' : 'Safe URL');
     } catch (error) {
