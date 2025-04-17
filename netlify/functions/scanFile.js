@@ -1,9 +1,10 @@
 const axios = require('axios');
+const FormData = require('form-data');
 
 exports.handler = async (event) => {
   console.log('Function triggered');
+
   try {
-    // Check if the method is POST
     if (event.httpMethod !== 'POST') {
       console.log('Invalid HTTP Method:', event.httpMethod);
       return {
@@ -12,34 +13,36 @@ exports.handler = async (event) => {
       };
     }
 
-    // Log the event body
-    console.log('Event body:', event.body);
+    console.log('Parsing the file from the request...');
 
-    // Parse the incoming file buffer from the request
-    const fileBuffer = Buffer.from(event.body, 'base64');
-
-    // Ensure the environment variable is set
-    if (!process.env.VIRUSTOTAL_API_KEY) {
-      console.error('Missing VirusTotal API Key');
+    // Decode the incoming form data
+    const contentType = event.headers['content-type'] || event.headers['Content-Type'];
+    if (!contentType.includes('multipart/form-data')) {
+      console.error('Invalid Content-Type:', contentType);
       return {
-        statusCode: 500,
-        body: 'Server configuration error: Missing API Key',
+        statusCode: 400,
+        body: 'Invalid Content-Type. Expected multipart/form-data.',
       };
     }
 
-    // Send the file to the VirusTotal API
+    // Parse the body into binary data
+    const fileBuffer = Buffer.from(event.body, 'base64');
+
+    // Prepare the file for VirusTotal
+    const formData = new FormData();
+    formData.append('file', fileBuffer, 'uploaded-file'); // Send the file as binary
+
     console.log('Sending file to VirusTotal...');
-    const response = await axios.post('https://www.virustotal.com/api/v3/files', fileBuffer, {
+    const response = await axios.post('https://www.virustotal.com/api/v3/files', formData, {
       headers: {
-        'x-apikey': process.env.VIRUSTOTAL_API_KEY,
-        'Content-Type': 'application/octet-stream',
+        ...formData.getHeaders(),
+        'x-apikey': process.env.VIRUSTOTAL_API_KEY, // Include your API key
       },
     });
 
-    // Log the VirusTotal API response
-    console.log('VirusTotal API Response:', response.data);
+    console.log('VirusTotal Response:', response.data);
 
-    // Return the VirusTotal API response to the client
+    // Return the VirusTotal API response
     return {
       statusCode: 200,
       body: JSON.stringify(response.data),
