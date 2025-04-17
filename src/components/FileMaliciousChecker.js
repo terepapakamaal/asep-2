@@ -13,7 +13,7 @@ const FileMaliciousChecker = () => {
     try {
       const response = await axios.post('https://www.virustotal.com/api/v3/files', formData, {
         headers: {
-          'x-apikey': 'your-virustotal-api-key',
+          'x-apikey': '9ea95a27237d6f9b5ac5a0549faf665a818150d1d8e66f497aaf6e1db357a7d4',
           'Content-Type': 'multipart/form-data',
         },
       });
