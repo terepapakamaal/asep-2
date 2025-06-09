@@ -7,7 +7,6 @@ import HomePage from './pages/HomePage';
 import SmsCheckerPage from './pages/SmsCheckerPage';
 import PhoneCheckerPage from './pages/PhoneCheckerPage';
 import UrlCheckerPage from './pages/UrlCheckerPage';
-import FileCheckerPage from './pages/FileCheckerPage';
 import PasswordGuidePage from './pages/PasswordGuidePage';
 import EducationPage from './pages/EducationPage';
 import './App.css';
@@ -23,7 +22,6 @@ function App() {
             <Route path="/sms-checker" element={<SmsCheckerPage />} />
             <Route path="/phone-checker" element={<PhoneCheckerPage />} />
             <Route path="/url-checker" element={<UrlCheckerPage />} />
-            <Route path="/file-checker" element={<FileCheckerPage />} />
             <Route path="/password-guide" element={<PasswordGuidePage />} />
             <Route path="/education" element={<EducationPage />} />
             {/* Add other routes as needed */}
