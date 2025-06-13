@@ -3,18 +3,25 @@ import { AppBar, Toolbar, Typography, Button, Box, IconButton, useTheme } from '
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom'; 
 import SecurityIcon from '@mui/icons-material/Security'; 
+import DescriptionIcon from '@mui/icons-material/Description'; // Example icon for File Checker
+import HomeIcon from '@mui/icons-material/Home'; // <-- Add this
+import SmsIcon from '@mui/icons-material/Sms'; // <-- Add this
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid'; // <-- Add this
+import LinkIcon from '@mui/icons-material/Link'; // <-- Add this
+import VpnKeyIcon from '@mui/icons-material/VpnKey'; // <-- Add this
+import SchoolIcon from '@mui/icons-material/School'; // <-- Add this
 
 const Navbar = ({ isMobile, onMenuClick }) => {
     const theme = useTheme();
 
-    const navItems = [
-        { label: 'Home', path: '/' },
-        { label: 'SMS Check', path: '/sms-checker' },
-        { label: 'Phone Check', path: '/phone-checker' },
-        { label: 'URL Check', path: '/url-checker' },
-        // { label: 'File Check', path: '/file-checker' }, // Uncomment when ready
-        { label: 'Passwords', path: '/password-guide' },
-        { label: 'Education', path: '/education' },
+    const pages = [
+        { name: 'Home', path: '/', icon: <HomeIcon /> },
+        { name: 'SMS Checker', path: '/sms-checker', icon: <SmsIcon /> },
+        { name: 'Phone Checker', path: '/phone-checker', icon: <PhoneAndroidIcon /> },
+        { name: 'URL Checker', path: '/url-checker', icon: <LinkIcon /> },
+        { name: 'File Checker', path: '/file-checker', icon: <DescriptionIcon /> }, // <-- Add File Checker
+        { name: 'Password Guide', path: '/password-guide', icon: <VpnKeyIcon /> },
+        { name: 'Education', path: '/education', icon: <SchoolIcon /> },
     ];
 
     return (
@@ -37,15 +44,15 @@ const Navbar = ({ isMobile, onMenuClick }) => {
                 </Typography>
                 {!isMobile && (
                     <Box>
-                        {navItems.map((item) => (
+                        {pages.map((item) => (
                             <Button
-                                key={item.label}
+                                key={item.name}
                                 color="inherit"
                                 component={RouterLink}
                                 to={item.path}
                                 sx={{ ml: 1 }}
                             >
-                                {item.label}
+                                {item.name}
                             </Button>
                         ))}
                         {/* Email Breach Redirect Link for Desktop Navbar */}

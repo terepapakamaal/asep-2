@@ -1,0 +1,26 @@
+{
+  "name": "asep-2",
+  "version": "1.0.0",
+  "description": "A project to help users identify and avoid online scams with various tools.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@mui/material": "^5.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^5.2.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "react-scripts": "4.0.3"
+  },
+  "homepage": ".",
+  "license": "MIT"
+}

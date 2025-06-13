@@ -14,6 +14,7 @@ import PhoneCheckerPage from './pages/PhoneCheckerPage';
 import UrlCheckerPage from './pages/UrlCheckerPage';
 import PasswordGuidePage from './pages/PasswordGuidePage';
 import EducationPage from './pages/EducationPage';
+import FileCheckerPage from './pages/FileCheckerPage'; // <-- Add this import
 
 // Non-protected pages (assuming you move SignIn.js and SignUp.js)
 import SignInPage from './pages/SignInPage'; // e.g., src/pages/SignInPage.js
@@ -44,6 +45,7 @@ const AppRoutes = () => {
         <Route path="url-checker" element={<UrlCheckerPage />} />
         <Route path="password-guide" element={<PasswordGuidePage />} />
         <Route path="education" element={<EducationPage />} />
+        <Route path="file-checker" element={<FileCheckerPage />} /> {/* <-- Add this route */}
         {/* Add other protected routes here. They will be relative to the ProtectedLayout. */}
         {/* Example: <Route path="dashboard" element={<DashboardPage />} /> */}
       </Route>

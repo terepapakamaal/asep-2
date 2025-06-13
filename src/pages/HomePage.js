@@ -5,9 +5,50 @@ import ShieldIcon from '@mui/icons-material/Shield';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LinkOffIcon from '@mui/icons-material/LinkOff';
 import DescriptionIcon from '@mui/icons-material/Description';
-import LockIcon from '@mui/icons-material/Lock';
+/* import LockIcon from '@mui/icons-material/Lock'; */
 import SchoolIcon from '@mui/icons-material/School';
 import EmailIcon from '@mui/icons-material/Email';
+import SmsIcon from '@mui/icons-material/Sms';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+
+const features = [
+  {
+    title: 'SMS Checker',
+    description: 'Analyze SMS messages for potential phishing attempts or scams.',
+    icon: <SmsIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    path: '/sms-checker',
+  },
+  {
+    title: 'Phone Number Checker',
+    description: 'Check phone numbers against known spam databases.',
+    icon: <PhoneAndroidIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    path: '/phone-checker',
+  },
+  {
+    title: 'URL Checker',
+    description: 'Verify URLs for safety and malicious content.',
+    icon: <LinkOffIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    path: '/url-checker',
+  },
+  {
+    title: 'File Checker',
+    description: 'Scan files for viruses and malware.',
+    icon: <DescriptionIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    path: '/file-checker',
+  },
+  {
+    title: 'Password Guide',
+    description: 'Learn how to create and manage strong passwords.',
+    icon: <VpnKeyIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    path: '/password-guide',
+  },
+  {
+    title: 'Cybersecurity Education',
+    description: 'Educational resources to enhance your cyber awareness.',
+    icon: <SchoolIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    path: '/education',
+  },
+];
 
 const HomePage = () => {
   return (
@@ -27,42 +68,22 @@ const HomePage = () => {
       </Typography>
 
       <Grid container spacing={3} justifyContent="center">
-        {/* Tool Links */}
+        {features.map((feature, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Button
+              variant="outlined"
+              fullWidth
+              component={RouterLink}
+              to={feature.path}
+              startIcon={feature.icon}
+            >
+              {feature.title}
+            </Button>
+          </Grid>
+        ))}
         <Grid item xs={12} sm={6} md={4}>
-          <Button variant="outlined" fullWidth component={RouterLink} to="/sms-checker" startIcon={<PhoneAndroidIcon />}>
-            Check Suspicious SMS
-          </Button>
-        </Grid>
-         <Grid item xs={12} sm={6} md={4}>
-          <Button variant="outlined" fullWidth component={RouterLink} to="/phone-checker" startIcon={<PhoneAndroidIcon />}>
-            Check Scam Phone Numbers
-          </Button>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Button variant="outlined" fullWidth component={RouterLink} to="/url-checker" startIcon={<LinkOffIcon />}>
-            Check Website Safety (URL)
-          </Button>
-        </Grid>
-        {/* <Grid item xs={12} sm={6} md={4}>
-          <Button variant="outlined" fullWidth component={RouterLink} to="/file-checker" startIcon={<DescriptionIcon />}>
-            Check File Safety
-          </Button>
-        </Grid> */}
-
-        {/* Resource Links */}
-         <Grid item xs={12} sm={6} md={4}>
-          <Button variant="outlined" fullWidth component={RouterLink} to="/password-guide" startIcon={<LockIcon />}>
-            Strong Password Guide
-          </Button>
-        </Grid>
-         <Grid item xs={12} sm={6} md={4}>
-          <Button variant="outlined" fullWidth component={RouterLink} to="/education" startIcon={<SchoolIcon />}>
-            Learn About Scams
-          </Button>
-        </Grid>
-         <Grid item xs={12} sm={6} md={4}>
           <Button
-            variant="contained" // Make it stand out slightly
+            variant="contained"
             color="secondary"
             fullWidth
             href="https://haveibeenpwned.com/"
@@ -76,18 +97,17 @@ const HomePage = () => {
       </Grid>
 
       <Box sx={{ mt: 5, p: 3, bgcolor: 'background.paper', borderRadius: 1 }}>
-          <Typography variant="h6" gutterBottom>About This Project</Typography>
-          <Typography paragraph>
-              Online scams are a growing problem in India. This website aims to empower users by providing simple tools to check potentially risky messages, numbers, links, and files.
-          </Typography>
-           <Typography paragraph>
-              We also provide educational resources to help you recognize common scam tactics and adopt safer online habits like using strong, unique passwords and enabling Two-Factor Authentication (2FA).
-          </Typography>
-           <Typography>
-              Our goal is to create a more informed and resilient online community in India. Stay vigilant and stay safe!
-          </Typography>
+        <Typography variant="h6" gutterBottom>About This Project</Typography>
+        <Typography paragraph>
+          Online scams are a growing problem in India. This website aims to empower users by providing simple tools to check potentially risky messages, numbers, links, and files.
+        </Typography>
+        <Typography paragraph>
+          We also provide educational resources to help you recognize common scam tactics and adopt safer online habits like using strong, unique passwords and enabling Two-Factor Authentication (2FA).
+        </Typography>
+        <Typography>
+          Our goal is to create a more informed and resilient online community in India. Stay vigilant and stay safe!
+        </Typography>
       </Box>
-
     </Container>
   );
 };
